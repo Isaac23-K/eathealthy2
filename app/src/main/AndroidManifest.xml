@@ -8,9 +8,20 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.EatHelathy">
-        <activity android:name=".Contacts"></activity>
-        <activity android:name=".Recipe" />
+        android:theme="@style/Theme.EatHealthy">
+        <activity android:name=".Contacts">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.moringaschool.eathealthy.MainActivity">
+            </meta-data>
+        </activity>
+        <activity android:name=".Recipe" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.moringaschool.eathealthy.MainActivity">
+            </meta-data>
+        </activity>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

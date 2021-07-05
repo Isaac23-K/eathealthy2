@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button mFindsRecipesButton;
     @BindView(R.id.RecipeEditText)
     EditText mRecipeEditText;
+    @BindView(R.id.contactsButton)
+    Button mContactsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,15 +30,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        mFindsRecipesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String recipes = mRecipeEditText.getText().toString();
-                Intent intent = new Intent(MainActivity.this, Recipe.class);
-                intent.putExtra("recipes", recipes);
-                startActivity(intent);
-            }
-        });
+        mFindsRecipesButton.setOnClickListener(this);
+        mContactsButton.setOnClickListener(this);
+
     }
 
     @Override
@@ -47,9 +43,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             intent.putExtra("recipes", recipes);
             startActivity(intent);
             Toast.makeText(MainActivity.this, recipes, Toast.LENGTH_SHORT).show();
-
+        } else if (v == mContactsButton){
+            Intent intent = new Intent(MainActivity.this, Contacts.class);
+            startActivity(intent);
         }
     }
+
+
+
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
 //        MenuInflater inflater = getMenuInflater();

@@ -1,4 +1,4 @@
-package com.moringaschool.eathelathy;
+package com.moringaschool.eathealthy;
 
 import android.content.Context;
 

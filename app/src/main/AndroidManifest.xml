@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.moringaschool.eathelathy">
+    package="com.moringaschool.eathealthy">
 
     <application
         android:allowBackup="true"

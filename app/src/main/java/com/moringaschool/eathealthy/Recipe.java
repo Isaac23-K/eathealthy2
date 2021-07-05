@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.moringaschool.eathealthy.R;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

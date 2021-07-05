@@ -16,5 +16,23 @@
         tools:layout_editor_absoluteX="56dp"
         tools:layout_editor_absoluteY="91dp" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contact"
+        android:fontFamily="@font/aladin"
+        android:text="Email : ikaptoge@yahoo.com"
+        android:textSize="40dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:fontFamily="@font/aladin"
+        android:text="Phone : 0704539368"
+        android:textSize="40dp" />
+
 
 </RelativeLayout>

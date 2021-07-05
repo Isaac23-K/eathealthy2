@@ -11,6 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Here are some recipes "
+        android:layout_marginTop="35dp"
+        android:layout_alignParentTop="true"
         android:id="@+id/RecipeTextView"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
@@ -20,7 +22,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/listView"
         android:layout_below="@+id/RecipeTextView"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"  />
 
 

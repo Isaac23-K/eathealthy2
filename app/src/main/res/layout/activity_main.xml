@@ -33,22 +33,36 @@
         android:layout_height="wrap_content"
         android:id="@+id/RecipeEditText"
         android:background="@color/colorTextIcons"
-        android:layout_above="@+id/findRecipesButton"
-        android:layout_marginBottom="266.5dp"
+        android:layout_below="@+id/appNameTextView"
+        android:layout_marginTop="60dp"
         android:padding="5dp"
         android:hint="Search for Recipe"
         android:layout_centerHorizontal="true"
         />
 
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/RecipeEditText"
         android:text="Find Recipe"
         android:id="@+id/findRecipesButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp"
+        android:background="@color/colorSecondaryText"
+        android:textColor="@color/colorTextIcons" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Contacts"
+        android:id="@+id/contact"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:background="@color/colorSecondaryText"
         android:textColor="@color/colorTextIcons" />
+
+
 
 
 

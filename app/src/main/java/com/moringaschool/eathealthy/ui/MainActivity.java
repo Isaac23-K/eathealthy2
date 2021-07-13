@@ -1,4 +1,4 @@
-package com.moringaschool.eathealthy;
+package com.moringaschool.eathealthy.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 

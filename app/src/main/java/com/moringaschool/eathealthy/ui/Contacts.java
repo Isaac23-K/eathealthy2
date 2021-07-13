@@ -1,8 +1,10 @@
-package com.moringaschool.eathealthy;
+package com.moringaschool.eathealthy.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.moringaschool.eathealthy.R;
 
 public class Contacts extends AppCompatActivity {
 

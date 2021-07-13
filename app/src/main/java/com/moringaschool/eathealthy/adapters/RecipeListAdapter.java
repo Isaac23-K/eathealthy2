@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.moringaschool.eathealthy.R;
 import com.moringaschool.eathealthy.ui.Recipe;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 import java.util.List;
 
 public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.RecipeViewHolder> {
@@ -36,5 +39,12 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
     @Override
     public int getItemCount() {
         return mRecipe.size();
+    }
+
+    public class RecipeViewHolder extends RecyclerView.ViewHolder{
+
+        public RecipeViewHolder(View itemView) {
+            super(itemView);
+        }
     }
 }

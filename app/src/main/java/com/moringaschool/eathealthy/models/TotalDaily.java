@@ -1,10 +1,10 @@
 
-package com.moringaschool.eathealthy;
+package com.moringaschool.eathealthy.models;
 
 import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
-public class Sub {
+public class TotalDaily {
 
 
 }

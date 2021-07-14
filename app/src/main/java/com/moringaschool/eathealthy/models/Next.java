@@ -1,12 +1,12 @@
 
-package com.moringaschool.eathealthy;
+package com.moringaschool.eathealthy.models;
 
 import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("jsonschema2pojo")
-public class Next__1 {
+public class Next {
 
     @SerializedName("href")
     @Expose
@@ -19,7 +19,7 @@ public class Next__1 {
      * No args constructor for use in serialization
      * 
      */
-    public Next__1() {
+    public Next() {
     }
 
     /**
@@ -27,7 +27,7 @@ public class Next__1 {
      * @param href
      * @param title
      */
-    public Next__1(String href, String title) {
+    public Next(String href, String title) {
         super();
         this.href = href;
         this.title = title;

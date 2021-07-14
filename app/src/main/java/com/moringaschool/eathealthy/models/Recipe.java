@@ -1,5 +1,5 @@
 
-package com.moringaschool.eathealthy;
+package com.moringaschool.eathealthy.models;
 
 import java.util.List;
 import javax.annotation.Generated;

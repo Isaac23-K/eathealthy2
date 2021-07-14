@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringaschool.eathealthy.R;
 import com.moringaschool.eathealthy.ui.Recipe;
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -59,6 +60,8 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
             mContext = itemView.getContext();
         }
 
-
+public void bindRecipe(Recipe recipe){
+   // Picasso.get().load(recipe.getImageUrl()).into();
+}
     }
 }

@@ -33,14 +33,10 @@ import retrofit2.Response;
 public class Recipe extends AppCompatActivity {
 
     // Works on Views .
-    @BindView(R.id.progressBar)
-    ProgressBar mProgressBar;
-    @BindView(R.id.errorTextView)
-    TextView mErrorTextView;
-    @BindView(R.id.recyclerView)
-    RecyclerView mRecyclerView;
-    @BindView(R.id.RecipeTextView)
-    TextView mRecipeTextView;
+    @BindView(R.id.progressBar) ProgressBar mProgressBar;
+    @BindView(R.id.errorTextView) TextView mErrorTextView;
+    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
+    @BindView(R.id.RecipeTextView) TextView mRecipeTextView;
 
     private RecipeListAdapter mAdapter;
     public List<Hit> hits;
@@ -56,14 +52,14 @@ public class Recipe extends AppCompatActivity {
 
         RecipeApi client = RecipeClient.getClient();
 
-        Call<RecipeSearch> call = client.getRecipe("recipes",recipes);
+        Call<RecipeSearch> call = client.getRecipe(recipes,"02acd894","1e6f185f777cbd377b4d8be8552a80aa");
 
         call.enqueue(new Callback<RecipeSearch>() {
             @Override
             public void onResponse(retrofit2.Call<RecipeSearch> call, Response<RecipeSearch> response) {
                 hideProgressBar();
                 if (response.isSuccessful()) {
-                    List<Hit> recipes = response.body().getHits();
+                    List<Hit>recipes = response.body().getHits();
                     recipes = response.body().getHits();
                     mAdapter = new RecipeListAdapter(Recipe.this, hits);
                     mRecyclerView.setAdapter(mAdapter);

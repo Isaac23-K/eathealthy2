@@ -11,6 +11,7 @@ import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.moringaschool.eathealthy.BuildConfig.EDAMAM_API;
 import static com.moringaschool.eathealthy.Constants.EDAMAM_BASE_URL;
 
 
@@ -24,6 +25,7 @@ public class RecipeClient {
                 @Override
                 public Response intercept(Chain chain) throws IOException {
                     Request newRequest = chain.request().newBuilder()
+                          //  .addHeader("Authorization", EDAMAM_API)
                             .build();
                     return chain.proceed(newRequest);
                 }

@@ -46,12 +46,9 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
     }
 
     public class RecipeViewHolder extends RecyclerView.ViewHolder{
-//        @BindView(R.id.ImageView)
-//        ImageView mRestaurantImageView;
-//        @BindView(R.id.restaurantNameTextView)
-//        TextView mNameTextView;
-//        @BindView(R.id.categoryTextView) TextView mCategoryTextView;
-//        @BindView(R.id.ratingTextView) TextView mRatingTextView;
+        @BindView(R.id.recipeImageView) ImageView mRecipeImageView ;
+        @BindView(R.id.recipeNameTextView) TextView mRecipeTextView ;
+        @BindView(R.id.sourceTextView) TextView mSourceTextView;
             private Context mContext;
 
 
@@ -62,7 +59,10 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
         }
 
 public void bindRecipe(Hit recipe){
-   // Picasso.get().load(recipe.getImageUrl()).into();
+   // Picasso.get().load(recipe.);
+    mRecipeTextView.setText(recipe.getRecipe().getLabel());
+    mSourceTextView.setText("Created by "+ recipe.getRecipe().getSource());
+
 }
     }
 }

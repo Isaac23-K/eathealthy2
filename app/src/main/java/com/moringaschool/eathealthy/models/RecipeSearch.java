@@ -2,13 +2,11 @@
 package com.moringaschool.eathealthy.models;
 
 import java.util.List;
-import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.moringaschool.eathealthy.models.Hit;
 import com.moringaschool.eathealthy.models.Links;
 
-@Generated("jsonschema2pojo")
 public class RecipeSearch {
 
     @SerializedName("from")

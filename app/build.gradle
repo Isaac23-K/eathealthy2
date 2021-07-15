@@ -26,7 +26,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         buildTypes.each {
-            it.buildConfigField 'String', 'EDMAM_API', EDMAM_BASE_URL
+            it.buildConfigField 'String', 'EDAMAM_API', EDAMAM_API_Key
         }
     }
     compileOptions {

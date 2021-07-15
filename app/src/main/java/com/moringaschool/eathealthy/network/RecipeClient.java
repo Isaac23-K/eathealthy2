@@ -3,6 +3,7 @@ package com.moringaschool.eathealthy.network;
 
 import java.io.IOException;
 
+
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -10,7 +11,7 @@ import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.moringaschool.eathealthy.Constants.EDMAM_BASE_URL;
+import static com.moringaschool.eathealthy.Constants.EDAMAM_BASE_URL;
 
 
 public class RecipeClient {
@@ -29,7 +30,7 @@ public class RecipeClient {
             })
                     .build();
             retrofit = new Retrofit.Builder()
-                    .baseUrl(EDMAM_BASE_URL)
+                    .baseUrl(EDAMAM_BASE_URL)
                     .client(okHttpClient)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();

@@ -17,12 +17,9 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     // @BindView(R.id.appNameTextView) TextView mAppNameTextView;
-    @BindView(R.id.findRecipesButton)
-    Button mFindsRecipesButton;
-    @BindView(R.id.RecipeEditText)
-    EditText mRecipeEditText;
-    @BindView(R.id.contactsButton)
-    Button mContactsButton;
+    @BindView(R.id.findRecipesButton) Button mFindsRecipesButton;
+    @BindView(R.id.RecipeEditText) EditText mRecipeEditText;
+    @BindView(R.id.contactsButton) Button mContactsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(MainActivity.this, Recipe.class);
             intent.putExtra("recipes", recipes);
             startActivity(intent);
-            Toast.makeText(MainActivity.this, recipes, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(MainActivity.this, recipes, Toast.LENGTH_SHORT).show();
         } else if (v == mContactsButton){
             Intent intent = new Intent(MainActivity.this, Contacts.class);
             startActivity(intent);

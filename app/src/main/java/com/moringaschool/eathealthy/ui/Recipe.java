@@ -39,8 +39,6 @@ public class Recipe extends AppCompatActivity {
     TextView mErrorTextView;
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
-    @BindView(R.id.listView)
-    ListView mListView;
     @BindView(R.id.RecipeTextView)
     TextView mRecipeTextView;
 

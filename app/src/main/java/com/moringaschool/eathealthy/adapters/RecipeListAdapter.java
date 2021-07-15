@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringaschool.eathealthy.R;
+import com.moringaschool.eathealthy.models.Hit;
 import com.moringaschool.eathealthy.ui.Recipe;
 import com.squareup.picasso.Picasso;
 
@@ -19,12 +20,12 @@ import butterknife.ButterKnife;
 import java.util.List;
 
 public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.RecipeViewHolder> {
-    private List<Recipe>mRecipe;
+    private List<Hit> mHits;
     private Context mContext;
 
-    public RecipeListAdapter (Context context, List<Recipe>recipe){
+    public RecipeListAdapter (Context context, List<Hit>hits){
         mContext = context ;
-        mRecipe = recipe ;
+        mHits = hits;
 
     }
     @Override
@@ -36,12 +37,12 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
 
     @Override
     public void onBindViewHolder(RecipeListAdapter.RecipeViewHolder holder, int position) {
-    holder.bindRecipe(mRecipe.get(position));
+    holder.bindRecipe(mHits.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return mRecipe.size();
+        return mHits.size();
     }
 
     public class RecipeViewHolder extends RecyclerView.ViewHolder{
@@ -60,7 +61,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
             mContext = itemView.getContext();
         }
 
-public void bindRecipe(Recipe recipe){
+public void bindRecipe(Hit recipe){
    // Picasso.get().load(recipe.getImageUrl()).into();
 }
     }

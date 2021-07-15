@@ -2,11 +2,11 @@ package com.moringaschool.eathealthy.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.telecom.Call;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringaschool.eathealthy.R;
+import com.moringaschool.eathealthy.RecipeArrayAdapter;
 import com.moringaschool.eathealthy.adapters.RecipeListAdapter;
 import com.moringaschool.eathealthy.models.Hit;
 import com.moringaschool.eathealthy.models.RecipeSearch;
@@ -25,10 +26,14 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Recipe extends AppCompatActivity {
+    @BindView(R.id.progressBar) ProgressBar mProgressBar;
+    @BindView(R.id.errorTextView) TextView mErrorTextView ;
+    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     @BindView(R.id.listView) ListView mListView ;
     @BindView(R.id.RecipeTextView) TextView mRecipeTextView;
 
@@ -36,7 +41,7 @@ public class Recipe extends AppCompatActivity {
 
     private RecipeListAdapter mAdapter ;
 
-    public List<Hit> recipeDetails;
+    public List<Hit> hits;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -49,23 +54,25 @@ public class Recipe extends AppCompatActivity {
 
         RecipeApi client = RecipeClient.getClient();
 
-        Call<RecipeSearch> call = client.getRecipe(recipes, "recipes");
+        Call<RecipeSearch> call = client.getRecipe( "recipes");
 
         call.enqueue(new Callback<RecipeSearch>() {
             @Override
             public void onResponse(retrofit2.Call<RecipeSearch> call, Response<RecipeSearch> response) {
                 //hideProgressBar();
                 if (response.isSuccessful()){
-                    recipeDetails = response.body().getHits();
-                    mAdapter = new RecipeListAdapter(recipeDetails,Recipe.this);
-//                    mRecyclerView.setAdapter(mAdapter);
-//                    RecyclerView.LayoutManager layoutManager =
-//                            new LinearLayoutManager(RestaurantsActivity.this);
-//                    mRecyclerView.setLayoutManager(layoutManager);
-//                    mRecyclerView.setHasFixedSize(true);
+                    List<Hit> recipes = response.body().getHits();
+                    recipes = response.body().getHits();
+                    mAdapter = new RecipeListAdapter(Recipe.this,hits);
+                    mRecyclerView.setAdapter(mAdapter);
+                    RecyclerView.LayoutManager layoutManager =
+                            new LinearLayoutManager(Recipe.this);
+                    mRecyclerView.setLayoutManager(layoutManager);
+                    mRecyclerView.setHasFixedSize(true);
 
                    // showRestaurants();
-                } else {
+                }
+                else {
                   //  showUnsuccessfulMessage();
                 }
             }

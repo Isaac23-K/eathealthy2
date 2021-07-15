@@ -31,20 +31,24 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Recipe extends AppCompatActivity {
-    @BindView(R.id.progressBar) ProgressBar mProgressBar;
-    @BindView(R.id.errorTextView) TextView mErrorTextView ;
-    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
-    @BindView(R.id.listView) ListView mListView ;
-    @BindView(R.id.RecipeTextView) TextView mRecipeTextView;
 
-    //private String [] recipes = new String[] {"Cooking rice" , "Cooking chicken ", "Making eggs" , "Cooking beef"};
+    // Works on Views .
+    @BindView(R.id.progressBar)
+    ProgressBar mProgressBar;
+    @BindView(R.id.errorTextView)
+    TextView mErrorTextView;
+    @BindView(R.id.recyclerView)
+    RecyclerView mRecyclerView;
+    @BindView(R.id.listView)
+    ListView mListView;
+    @BindView(R.id.RecipeTextView)
+    TextView mRecipeTextView;
 
-    private RecipeListAdapter mAdapter ;
-
+    private RecipeListAdapter mAdapter;
     public List<Hit> hits;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipes);
         ButterKnife.bind(this);
@@ -54,62 +58,51 @@ public class Recipe extends AppCompatActivity {
 
         RecipeApi client = RecipeClient.getClient();
 
-        Call<RecipeSearch> call = client.getRecipe( "recipes");
+        Call<RecipeSearch> call = client.getRecipe("recipes");
 
         call.enqueue(new Callback<RecipeSearch>() {
             @Override
             public void onResponse(retrofit2.Call<RecipeSearch> call, Response<RecipeSearch> response) {
-                //hideProgressBar();
-                if (response.isSuccessful()){
+                hideProgressBar();
+                if (response.isSuccessful()) {
                     List<Hit> recipes = response.body().getHits();
                     recipes = response.body().getHits();
-                    mAdapter = new RecipeListAdapter(Recipe.this,hits);
+                    mAdapter = new RecipeListAdapter(Recipe.this, hits);
                     mRecyclerView.setAdapter(mAdapter);
                     RecyclerView.LayoutManager layoutManager =
                             new LinearLayoutManager(Recipe.this);
                     mRecyclerView.setLayoutManager(layoutManager);
                     mRecyclerView.setHasFixedSize(true);
 
-                   // showRestaurants();
-                }
-                else {
-                  //  showUnsuccessfulMessage();
+                    showRecipes();
+                } else {
+                    showUnsuccessfulMessage();
                 }
             }
+
             @Override
             public void onFailure(retrofit2.Call<RecipeSearch> call, Throwable t) {
-           // hideProgressBar();
-             //   showFailureMessage();
+                hideProgressBar();
+                showFailureMessage();
             }
         });
-
-//        private void showFailureMessage() {
-//            mErrorTextView.setText("Something went wrong. Please check your Internet connection and try again later");
-//            mErrorTextView.setVisibility(View.VISIBLE);
-//        }
-//
-//        private void showUnsuccessfulMessage() {
-//            mErrorTextView.setText("Something went wrong. Please try again later");
-//            mErrorTextView.setVisibility(View.VISIBLE);
-//        }
-
-//        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, recipes);
-//        mListView.setAdapter(adapter);
-//
-//        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                String recipes = ((TextView)view).getText().toString();
-//                Toast.makeText(Recipe.this, recipes, Toast.LENGTH_LONG).show();
-//            }
-//        });
-
-//        Intent intent = getIntent();
-//        String recipes = intent.getStringExtra("recipes");
-
-  //      mRecipeTextView.setText("These are some of the recipes :" + recipes);
-
-
     }
 
+    private void showFailureMessage() {
+        mErrorTextView.setText("Something went wrong. Please check your Internet connection and try again later");
+        mErrorTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void showUnsuccessfulMessage() {
+        mErrorTextView.setText("Something went wrong. Please try again later");
+        mErrorTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void showRecipes() {
+        mRecyclerView.setVisibility(View.VISIBLE);
+    }
+
+    private void hideProgressBar() {
+        mProgressBar.setVisibility(View.GONE);
+    }
 }

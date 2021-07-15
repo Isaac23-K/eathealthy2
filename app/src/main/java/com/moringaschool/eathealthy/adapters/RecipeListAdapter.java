@@ -59,7 +59,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
         }
 
 public void bindRecipe(Hit recipe){
-   // Picasso.get().load(recipe.);
+    Picasso.get().load(recipe.getRecipe().getImage()).into(mRecipeImageView);
     mRecipeTextView.setText(recipe.getRecipe().getLabel());
     mSourceTextView.setText("Created by "+ recipe.getRecipe().getSource());
 

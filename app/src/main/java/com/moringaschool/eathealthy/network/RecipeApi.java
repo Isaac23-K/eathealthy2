@@ -9,7 +9,8 @@ import retrofit2.http.Query;
 public interface RecipeApi {
     @GET("search")
     Call<RecipeSearch> getRecipe(
-             @Query("q") String q
+             @Query("q") String q,
+             @Query("app_id") String app_id
     );
 
 }

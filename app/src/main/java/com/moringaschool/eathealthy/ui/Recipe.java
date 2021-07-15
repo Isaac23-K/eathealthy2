@@ -56,7 +56,7 @@ public class Recipe extends AppCompatActivity {
 
         RecipeApi client = RecipeClient.getClient();
 
-        Call<RecipeSearch> call = client.getRecipe("recipes");
+        Call<RecipeSearch> call = client.getRecipe("recipes",recipes);
 
         call.enqueue(new Callback<RecipeSearch>() {
             @Override

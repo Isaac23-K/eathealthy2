@@ -1,11 +1,9 @@
 
 package com.moringaschool.eathealthy.models;
 
-import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-@Generated("jsonschema2pojo")
 public class Links__1 {
 
     @SerializedName("self")

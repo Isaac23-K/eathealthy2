@@ -1,6 +1,7 @@
 package com.moringaschool.eathealthy.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,58 +12,83 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringaschool.eathealthy.R;
 import com.moringaschool.eathealthy.models.Hit;
-import com.moringaschool.eathealthy.ui.Recipe;
+import com.moringaschool.eathealthy.models.Recipe;
+import com.moringaschool.eathealthy.ui.RecipeDetailActivity;
 import com.squareup.picasso.Picasso;
+
+import org.parceler.Parcels;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import java.util.List;
+
 
 public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.RecipeViewHolder> {
-    private List<Hit> mHits;
+    private List<Hit> adapterHits;
     private Context mContext;
 
-    public RecipeListAdapter (Context context, List<Hit>hits){
-        mContext = context ;
-        mHits = hits;
 
+    public RecipeListAdapter(List<Hit> mRecipes, Context mContext) {
+        this.adapterHits = mRecipes;
+        this.mContext = mContext;
     }
+
+
     @Override
     public RecipeListAdapter.RecipeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_recipes, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_list_item, parent, false);
         RecipeViewHolder viewHolder = new RecipeViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(RecipeListAdapter.RecipeViewHolder holder, int position) {
-    holder.bindRecipe(mHits.get(position));
+    public void onBindViewHolder(RecipeViewHolder holder, int position) {
+        holder.bindRecipe(adapterHits.get(position));
+
     }
 
     @Override
     public int getItemCount() {
-        return mHits.size();
+        return adapterHits.size();
     }
 
-    public class RecipeViewHolder extends RecyclerView.ViewHolder{
-        @BindView(R.id.recipeImageView) ImageView mRecipeImageView ;
-        @BindView(R.id.recipeNameTextView) TextView mRecipeTextView ;
-        @BindView(R.id.sourceTextView) TextView mSourceTextView;
-            private Context mContext;
+    public class RecipeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        public TextView mRecipeTextView;
+        @BindView(R.id.recipeImageView) ImageView mRecipeImageView;
+        @BindView(R.id.recipeNameTextView) TextView mNameTextView;
+        @BindView(R.id.cuisineTypeTextView) TextView isaacCuisineType;
 
 
-        public RecipeViewHolder(View itemView) {
+        private Context mContext;
+
+        public RecipeViewHolder(View itemView){
             super(itemView);
             ButterKnife.bind(this,itemView);
-            mContext = itemView.getContext();
+            mContext=itemView.getContext();
+            itemView.setOnClickListener(this);
+
+
+        }
+        public void bindRecipe(Hit recipe){
+            Picasso.get().load(recipe.getRecipe().getImage()).into(mRecipeImageView);
+            mNameTextView.setText(recipe.getRecipe().getLabel());
+//            Hit newCalories;
+//            newCalories.getRecipe().getCalories().
+            isaacCuisineType.setText("Source: "+recipe.getRecipe().getSource());
+
         }
 
-public void bindRecipe(Hit recipe){
-    Picasso.get().load(recipe.getRecipe().getImage()).into(mRecipeImageView);
-    mRecipeTextView.setText(recipe.getRecipe().getLabel());
-    mSourceTextView.setText("Created by "+ recipe.getRecipe().getSource());
+        @Override
+        public void onClick(View v) {
 
-}
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, RecipeDetailActivity.class);
+            intent.putExtra("position", itemPosition);
+            intent.putExtra("newHits", Parcels.wrap(adapterHits));
+            mContext.startActivity(intent);
+        }
     }
+
 }

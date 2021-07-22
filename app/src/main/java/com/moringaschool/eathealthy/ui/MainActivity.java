@@ -16,10 +16,15 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    public static final String TAG = MainActivity.class.getSimpleName();
+
     // @BindView(R.id.appNameTextView) TextView mAppNameTextView;
-    @BindView(R.id.findRecipesButton) Button mFindsRecipesButton;
-    @BindView(R.id.RecipeEditText) EditText mRecipeEditText;
-    @BindView(R.id.contactsButton) Button mContactsButton;
+    @BindView(R.id.findRecipesButton)
+    Button mFindsRecipesButton;
+    @BindView(R.id.RecipeEditText)
+    EditText mRecipeEditText;
+    @BindView(R.id.contactsButton)
+    Button mContactsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,17 +40,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v == mFindsRecipesButton) {
-            String recipes = mRecipeEditText.getText().toString();
+            String recipe = mRecipeEditText.getText().toString();
             Intent intent = new Intent(MainActivity.this, Recipe.class);
-            intent.putExtra("recipes", recipes);
+            intent.putExtra("recipe", recipe);
             startActivity(intent);
-            //Toast.makeText(MainActivity.this, recipes, Toast.LENGTH_SHORT).show();
-        } else if (v == mContactsButton){
+            //  Toast.makeText(MainActivity.this, recipe, Toast.LENGTH_SHORT).show();
+        } else if (v == mContactsButton) {
             Intent intent = new Intent(MainActivity.this, Contacts.class);
             startActivity(intent);
         }
     }
-
+}
 
 
 //    @Override
@@ -54,4 +59,3 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        inflater.inflate(R.menu.menu_root, menu);
 //        return true;
 //    }
-}

@@ -5,6 +5,9 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Recipe {
 
     @SerializedName("uri")
@@ -28,9 +31,9 @@ public class Recipe {
     @SerializedName("yield")
     @Expose
     private Integer yield;
-    @SerializedName("dietLabels")
-    @Expose
-    private List<String> dietLabels = null;
+//    @SerializedName("dietLabels")
+//    @Expose
+//    private List<String> dietLabels = null;
     @SerializedName("healthLabels")
     @Expose
     private List<String> healthLabels = null;
@@ -45,10 +48,13 @@ public class Recipe {
     private List<Ingredient> ingredients = null;
     @SerializedName("calories")
     @Expose
-    private Integer calories;
+    private Double calories;
     @SerializedName("totalWeight")
     @Expose
-    private Integer totalWeight;
+    private Double totalWeight;
+    @SerializedName("totalTime")
+    @Expose
+    private Integer totalTime;
     @SerializedName("cuisineType")
     @Expose
     private List<String> cuisineType = null;
@@ -59,9 +65,9 @@ public class Recipe {
     @Expose
     private List<String> dishType = null;
     @SerializedName("totalNutrients")
-    @Expose
-    private TotalNutrients totalNutrients;
-    @SerializedName("totalDaily")
+//    @Expose
+//    private TotalNutrients totalNutrients;
+//    @SerializedName("totalDaily")
     @Expose
     private TotalDaily totalDaily;
     @SerializedName("digest")
@@ -70,17 +76,18 @@ public class Recipe {
 
     /**
      * No args constructor for use in serialization
-     * 
+     *
      */
     public Recipe() {
     }
 
     /**
-     * 
+     *
      * @param image
      * @param shareAs
      * @param cautions
      * @param healthLabels
+     * @param totalTime
      * @param mealType
      * @param label
      * @param source
@@ -88,7 +95,7 @@ public class Recipe {
      * @param cuisineType
      * @param uri
      * @param url
-     * @param totalNutrients
+//     * @param totalNutrients
      * @param dietLabels
      * @param dishType
      * @param yield
@@ -98,7 +105,7 @@ public class Recipe {
      * @param totalDaily
      * @param ingredientLines
      */
-    public Recipe(String uri, String label, String image, String source, String url, String shareAs, Integer yield, List<String> dietLabels, List<String> healthLabels, List<String> cautions, List<String> ingredientLines, List<Ingredient> ingredients, Integer calories, Integer totalWeight, List<String> cuisineType, List<String> mealType, List<String> dishType, TotalNutrients totalNutrients, TotalDaily totalDaily, List<Digest> digest) {
+    public Recipe(String uri, String label, String image, String source, String url, String shareAs, Integer yield, List<String> dietLabels, List<String> healthLabels, List<String > cautions, List<String> ingredientLines, List<Ingredient> ingredients, Double calories, Double totalWeight, Integer totalTime, List<String> cuisineType, List<String> mealType, List<String> dishType, TotalDaily totalDaily, List<Digest> digest) {
         super();
         this.uri = uri;
         this.label = label;
@@ -107,17 +114,18 @@ public class Recipe {
         this.url = url;
         this.shareAs = shareAs;
         this.yield = yield;
-        this.dietLabels = dietLabels;
+       // this.dietLabels = dietLabels;
         this.healthLabels = healthLabels;
         this.cautions = cautions;
         this.ingredientLines = ingredientLines;
         this.ingredients = ingredients;
         this.calories = calories;
         this.totalWeight = totalWeight;
+        this.totalTime = totalTime;
         this.cuisineType = cuisineType;
         this.mealType = mealType;
         this.dishType = dishType;
-        this.totalNutrients = totalNutrients;
+      //  this.totalNutrients = totalNutrients;
         this.totalDaily = totalDaily;
         this.digest = digest;
     }
@@ -178,13 +186,13 @@ public class Recipe {
         this.yield = yield;
     }
 
-    public List<String> getDietLabels() {
-        return dietLabels;
-    }
+//    public List<String> getDietLabels() {
+//        return dietLabels;
+//    }
 
-    public void setDietLabels(List<String> dietLabels) {
-        this.dietLabels = dietLabels;
-    }
+//    public void setDietLabels(List<String> dietLabels) {
+//        this.dietLabels = dietLabels;
+//    }
 
     public List<String> getHealthLabels() {
         return healthLabels;
@@ -198,7 +206,7 @@ public class Recipe {
         return cautions;
     }
 
-    public void setCautions(List<String> cautions) {
+    public void setCautions(List<String > cautions) {
         this.cautions = cautions;
     }
 
@@ -218,20 +226,28 @@ public class Recipe {
         this.ingredients = ingredients;
     }
 
-    public Integer getCalories() {
+    public Double getCalories() {
         return calories;
     }
 
-    public void setCalories(Integer calories) {
+    public void setCalories(Double calories) {
         this.calories = calories;
     }
 
-    public Integer getTotalWeight() {
+    public Double getTotalWeight() {
         return totalWeight;
     }
 
-    public void setTotalWeight(Integer totalWeight) {
+    public void setTotalWeight(Double totalWeight) {
         this.totalWeight = totalWeight;
+    }
+
+    public Integer getTotalTime() {
+        return totalTime;
+    }
+
+    public void setTotalTime(Integer totalTime) {
+        this.totalTime = totalTime;
     }
 
     public List<String> getCuisineType() {
@@ -258,13 +274,13 @@ public class Recipe {
         this.dishType = dishType;
     }
 
-    public TotalNutrients getTotalNutrients() {
-        return totalNutrients;
-    }
+   // public TotalNutrients getTotalNutrients() {
+//        return totalNutrients;
+//    }
 
-    public void setTotalNutrients(TotalNutrients totalNutrients) {
-        this.totalNutrients = totalNutrients;
-    }
+//    public void setTotalNutrients(TotalNutrients totalNutrients) {
+//        this.totalNutrients = totalNutrients;
+//    }
 
     public TotalDaily getTotalDaily() {
         return totalDaily;

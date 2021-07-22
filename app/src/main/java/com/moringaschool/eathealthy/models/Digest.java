@@ -1,10 +1,13 @@
 
 package com.moringaschool.eathealthy.models;
 
+import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
 
+@Parcel
 public class Digest {
 
     @SerializedName("label")
@@ -13,12 +16,12 @@ public class Digest {
     @SerializedName("tag")
     @Expose
     private String tag;
-    @SerializedName("schemaOrgTag")
-    @Expose
-    private String schemaOrgTag;
+//    @SerializedName("schemaOrgTag")
+//    @Expose
+//    private Object schemaOrgTag;
     @SerializedName("total")
     @Expose
-    private Integer total;
+    private Double total;
     @SerializedName("hasRDI")
     @Expose
     private Boolean hasRDI;
@@ -30,7 +33,7 @@ public class Digest {
     private String unit;
     @SerializedName("sub")
     @Expose
-    private Sub sub;
+    private List<Sub> sub = null;
 
     /**
      * No args constructor for use in serialization
@@ -50,11 +53,11 @@ public class Digest {
      * @param label
      * @param tag
      */
-    public Digest(String label, String tag, String schemaOrgTag, Integer total, Boolean hasRDI, Integer daily, String unit, Sub sub) {
+    public Digest(String label, String tag, Object schemaOrgTag, Double total, Boolean hasRDI, Integer daily, String unit, List<Sub> sub) {
         super();
         this.label = label;
         this.tag = tag;
-        this.schemaOrgTag = schemaOrgTag;
+       // this.schemaOrgTag = schemaOrgTag;
         this.total = total;
         this.hasRDI = hasRDI;
         this.daily = daily;
@@ -78,19 +81,19 @@ public class Digest {
         this.tag = tag;
     }
 
-    public String getSchemaOrgTag() {
-        return schemaOrgTag;
-    }
+//    public Object getSchemaOrgTag() {
+//        return schemaOrgTag;
+//    }
+//
+//    public void setSchemaOrgTag(Object schemaOrgTag) {
+//        this.schemaOrgTag = schemaOrgTag;
+//    }
 
-    public void setSchemaOrgTag(String schemaOrgTag) {
-        this.schemaOrgTag = schemaOrgTag;
-    }
-
-    public Integer getTotal() {
+    public Double getTotal() {
         return total;
     }
 
-    public void setTotal(Integer total) {
+    public void setTotal(Double total) {
         this.total = total;
     }
 
@@ -118,11 +121,11 @@ public class Digest {
         this.unit = unit;
     }
 
-    public Sub getSub() {
+    public List<Sub> getSub() {
         return sub;
     }
 
-    public void setSub(Sub sub) {
+    public void setSub(List<Sub> sub) {
         this.sub = sub;
     }
 

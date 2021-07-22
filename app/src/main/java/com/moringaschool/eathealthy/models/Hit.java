@@ -1,17 +1,22 @@
-
 package com.moringaschool.eathealthy.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Hit {
 
     @SerializedName("recipe")
     @Expose
     private Recipe recipe;
-    @SerializedName("_links")
+    @SerializedName("bookmarked")
     @Expose
-    private Links__1 links;
+    private Boolean bookmarked;
+    @SerializedName("bought")
+    @Expose
+    private Boolean bought;
 
     /**
      * No args constructor for use in serialization
@@ -22,13 +27,15 @@ public class Hit {
 
     /**
      * 
+     * @param bookmarked
+     * @param bought
      * @param recipe
-     * @param links
      */
-    public Hit(Recipe recipe, Links__1 links) {
+    public Hit(Recipe recipe, Boolean bookmarked, Boolean bought) {
         super();
         this.recipe = recipe;
-        this.links = links;
+        this.bookmarked = bookmarked;
+        this.bought = bought;
     }
 
     public Recipe getRecipe() {
@@ -39,12 +46,20 @@ public class Hit {
         this.recipe = recipe;
     }
 
-    public Links__1 getLinks() {
-        return links;
+    public Boolean getBookmarked() {
+        return bookmarked;
     }
 
-    public void setLinks(Links__1 links) {
-        this.links = links;
+    public void setBookmarked(Boolean bookmarked) {
+        this.bookmarked = bookmarked;
+    }
+
+    public Boolean getBought() {
+        return bought;
+    }
+
+    public void setBought(Boolean bought) {
+        this.bought = bought;
     }
 
 }

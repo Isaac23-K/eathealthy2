@@ -1,4 +1,7 @@
 package com.moringaschool.eathealthy.ui;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -57,14 +60,10 @@ public class Recipe extends AppCompatActivity {
         Intent intent = getIntent();
         Log.e("TAG","after intent");
 
-        // mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        // mRecentSearch = mSharedPreferences.getString(Constants.PREFERENCES_RECIPE_KEY,null);
+
 
         String recipe = intent.getStringExtra("recipes");
 
-//        if (mRecentSearch != null) {
-//            fetchRecipes(mRecentSearch);
-//        }
 
         RecipeApi client = RecipeClient.getClient();
         Call<RecipeSearch> call = client.getRecipe(recipe, "02acd894", "1e6f185f777cbd377b4d8be8552a80aa");

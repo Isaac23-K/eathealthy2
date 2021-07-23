@@ -2,6 +2,7 @@ package com.moringaschool.eathealthy.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public static final String TAG = MainActivity.class.getSimpleName();
 
+    @SuppressLint("NonConstantResourceId")
     // @BindView(R.id.appNameTextView) TextView mAppNameTextView;
     @BindView(R.id.findRecipesButton)
     Button mFindsRecipesButton;

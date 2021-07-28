@@ -28,12 +28,13 @@
             android:textColor="@color/colorPrimary"
             android:id="@+id/recipeNameTextView"/>
 
+
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:text="One Cuisine Type"
             android:textColor="@color/black"
-            android:id="@+id/cuisineTypeTextView"
+            android:id="@+id/categoryTextView"
             android:textStyle="italic"/>
 
         <RelativeLayout

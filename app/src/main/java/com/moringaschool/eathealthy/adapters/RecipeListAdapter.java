@@ -11,9 +11,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringaschool.eathealthy.R;
-import com.moringaschool.eathealthy.models.Hit;
-import com.moringaschool.eathealthy.models.Recipe;
-import com.moringaschool.eathealthy.ui.RecipeDetailActivity;
+import com.moringaschool.eathealthy.models.Business;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -26,12 +24,12 @@ import butterknife.ButterKnife;
 
 
 public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.RecipeViewHolder> {
-    private List<Hit> adapterHits;
+    private List<Business> mRecipes;
     private Context mContext;
 
 
-    public RecipeListAdapter(List<Hit> mRecipes, Context mContext) {
-        this.adapterHits = mRecipes;
+    public RecipeListAdapter(List<Business> recipes, Context mContext) {
+        this.mRecipes = recipes;
         this.mContext = mContext;
     }
 
@@ -45,20 +43,21 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
 
     @Override
     public void onBindViewHolder(RecipeViewHolder holder, int position) {
-        holder.bindRecipe(adapterHits.get(position));
+        holder.bindRecipe(mRecipes.get(position));
 
     }
 
     @Override
     public int getItemCount() {
-        return adapterHits.size();
+        return mRecipes.size();
     }
 
     public class RecipeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public TextView mRecipeTextView;
         @BindView(R.id.recipeImageView) ImageView mRecipeImageView;
         @BindView(R.id.recipeNameTextView) TextView mNameTextView;
-        @BindView(R.id.cuisineTypeTextView) TextView isaacCuisineType;
+       // @BindView(R.id.cuisineTypeTextView) TextView isaacCuisineType;
+        @BindView(R.id.categoryTextView) TextView mCategoryTextView ;
 
 
         private Context mContext;
@@ -71,24 +70,28 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
 
 
         }
-        public void bindRecipe(Hit recipe){
-            Picasso.get().load(recipe.getRecipe().getImage()).into(mRecipeImageView);
-            mNameTextView.setText(recipe.getRecipe().getLabel());
-//            Hit newCalories;
-//            newCalories.getRecipe().getCalories().
-            isaacCuisineType.setText("Source: "+recipe.getRecipe().getSource());
+        public void bindRecipe(Business recipe){
+            Picasso.get().load(recipe.getImageUrl()).into(mRecipeImageView);
+           mNameTextView.setText(recipe.getName());
+           mCategoryTextView.setText(recipe.getCategories().get(0).getTitle());
+           // isaacCuisineType.setText("Source: "+recipe.getRecipe().getSource());
 
         }
 
         @Override
         public void onClick(View v) {
 
-            int itemPosition = getLayoutPosition();
-            Intent intent = new Intent(mContext, RecipeDetailActivity.class);
-            intent.putExtra("position", itemPosition);
-            intent.putExtra("newHits", Parcels.wrap(adapterHits));
-            mContext.startActivity(intent);
         }
+
+//        @Override
+//        public void onClick(View v) {
+//
+//            int itemPosition = getLayoutPosition();
+//            Intent intent = new Intent(mContext, RecipeDetailActivity.class);
+//            intent.putExtra("position", itemPosition);
+//            intent.putExtra("newHits", Parcels.wrap(adapterHits));
+//            mContext.startActivity(intent);
+//        }
     }
 
 }

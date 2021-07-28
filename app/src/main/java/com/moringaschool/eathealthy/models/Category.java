@@ -4,15 +4,11 @@ package com.moringaschool.eathealthy.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import org.parceler.Parcel;
+public class Category {
 
-@Parcel
-
-public class Self {
-
-    @SerializedName("href")
+    @SerializedName("alias")
     @Expose
-    private String href;
+    private String alias;
     @SerializedName("title")
     @Expose
     private String title;
@@ -21,26 +17,26 @@ public class Self {
      * No args constructor for use in serialization
      * 
      */
-    public Self() {
+    public Category() {
     }
 
     /**
      * 
-     * @param href
+     * @param alias
      * @param title
      */
-    public Self(String href, String title) {
+    public Category(String alias, String title) {
         super();
-        this.href = href;
+        this.alias = alias;
         this.title = title;
     }
 
-    public String getHref() {
-        return href;
+    public String getAlias() {
+        return alias;
     }
 
-    public void setHref(String href) {
-        this.href = href;
+    public void setAlias(String alias) {
+        this.alias = alias;
     }
 
     public String getTitle() {

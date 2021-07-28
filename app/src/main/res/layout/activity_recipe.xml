@@ -1,28 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/RecipeTextView"
+        android:layout_below="@id/locationTextView"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_marginTop="16dp"
-        android:visibility="gone" />
-
-
-<!--    <ListView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:id="@+id/listView"-->
-<!--        android:layout_below="@+id/RecipeTextView"-->
-<!--        android:layout_alignParentEnd="true"  />-->
+        android:visibility="gone"
+        android:layout_alignParentRight="true" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -32,23 +21,21 @@
         android:layout_centerInParent="true" />
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Restaurants near "
+        android:id="@+id/locationTextView"
+        android:layout_centerVertical="false"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone" />
+
+    <TextView
         android:id="@+id/errorTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_margin="16dp"
         android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/RecipeTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="35dp"
-        android:fontFamily="@font/aladin"
-        android:text="Here are some recipes " />
-
 
 
 

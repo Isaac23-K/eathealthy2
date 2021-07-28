@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v == mFindsRecipesButton) {
             String recipe = mRecipeEditText.getText().toString();
-            Intent intent = new Intent(MainActivity.this, Recipe.class);
+            Intent intent = new Intent(MainActivity.this, RecipeActivity.class);
             intent.putExtra("recipe", recipe);
             startActivity(intent);
             //  Toast.makeText(MainActivity.this, recipe, Toast.LENGTH_SHORT).show();
